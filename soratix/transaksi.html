@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transaksi - SoraTix</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background-color: #dff6f7;
+            color: #000000;
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .header {
+            width: 100%;
+            height: 80px;
+
+            background-color: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            box-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+
+        .logo span {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            color: #000000;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================== */
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           LAYOUT
+        ========================== */
+
+        .content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 25px;
+        }
+
+
+        /* =========================
+           CARD
+        ========================== */
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 25px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           DATA ORDER
+        ========================== */
+
+        .order-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            font-size: 13px;
+
+            padding-bottom: 12px;
+
+            border-bottom:
+                1px solid #eeeeee;
+        }
+
+        .info-row span:first-child {
+            color: #777777;
+        }
+
+        .info-row span:last-child {
+            text-align: right;
+        }
+
+
+        /* =========================
+           METODE PEMBAYARAN
+        ========================== */
+
+        .payment-option {
+            width: 100%;
+
+            border: 1px solid #c6dfe1;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            transition: 0.2s;
+        }
+
+        .payment-option:hover {
+            background-color: #eefafa;
+            border-color: #8ed2d7;
+        }
+
+        .payment-option input {
+            accent-color: #65bfc5;
+        }
+
+        .payment-name {
+            font-size: 14px;
+        }
+
+        .payment-desc {
+            display: block;
+
+            font-size: 11px;
+
+            color: #777777;
+
+            margin-top: 3px;
+        }
+
+
+        /* =========================
+           TOTAL
+        ========================== */
+
+        .total-box {
+            border-top:
+                1px solid #dddddd;
+
+            margin-top: 20px;
+
+            padding-top: 18px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .total-label {
+            font-size: 14px;
+        }
+
+        .total-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #388e94;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
+
+        .pay-btn {
+            width: 100%;
+
+            height: 48px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background-color: #a8dfe3;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            margin-top: 20px;
+        }
+
+        .pay-btn:hover {
+            background-color: #8ed2d7;
+        }
+
+
+        /* =========================
+           NOTICE
+        ========================== */
+
+        .notice {
+            background-color: #eefafa;
+
+            border-radius: 8px;
+
+            padding: 13px;
+
+            margin-top: 15px;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            color: #555555;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            width: 100%;
+
+            background-color: #fff8dc;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 12px;
+            color: #555555;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+
+            .header {
+                padding: 0 5%;
+            }
+
+            .logo span {
+                display: none;
+            }
+
+            .container {
+                width: 94%;
+                margin-top: 25px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <img
+                src="assets/logo.png"
+                alt="SoraTix">
+
+            <span>
+                SoraTix
+            </span>
+
+        </div>
+
+
+        <a
+            href="detail.html"
+            class="back-btn">
+
+            ← Kembali
+
+        </a>
+
+    </header>
+
+
+
+    <!-- =========================
+         CONTENT
+    ========================== -->
+
+    <main class="container">
+
+
+        <h1 class="page-title">
+            Transaksi
+        </h1>
+
+
+        <div class="content">
+
+
+            <!-- =====================
+                 DETAIL ORDER
+            ====================== -->
+
+            <div class="card">
+
+                <h2 class="card-title">
+                    Detail Pesanan
+                </h2>
+
+
+                <div class="order-info">
+
+
+                    <div class="info-row">
+
+                        <span>
+                            ID Order
+                        </span>
+
+                        <span id="idOrder">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Nama Customer
+                        </span>
+
+                        <span id="customer">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Tiket
+                        </span>
+
+                        <span id="kodeTiket">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Rute
+                        </span>
+
+                        <span id="rute">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Tanggal
+                        </span>
+
+                        <span id="tanggal">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Jam
+                        </span>
+
+                        <span id="jam">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Kelas
+                        </span>
+
+                        <span id="kelas">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Jumlah Tiket
+                        </span>
+
+                        <span id="jumlah">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Status Order
+                        </span>
+
+                        <span id="status">
+                            Menunggu Pembayaran
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================
+                 PEMBAYARAN
+            ====================== -->
+
+            <div class="card">
+
+                <h2 class="card-title">
+                    Metode Pembayaran
+                </h2>
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Transfer Bank">
+
+                    <div>
+
+                        <div class="payment-name">
+                            Transfer Bank
+                        </div>
+
+                        <span class="payment-desc">
+                            BCA / BNI / Mandiri
+                        </span>
+
+                    </div>
+
+                </label>
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="E-Wallet">
+
+                    <div>
+
+                        <div class="payment-name">
+                            E-Wallet
+                        </div>
+
+                        <span class="payment-desc">
+                            GoPay / OVO / DANA
+                        </span>
+
+                    </div>
+
+                </label>
+
+
+                <label class="payment-option">
+
+                    <input
+                        type="radio"
+                        name="payment"
+                        value="Virtual Account">
+
+                    <div>
+
+                        <div class="payment-name">
+                            Virtual Account
+                        </div>
+
+                        <span class="payment-desc">
+                            Pembayaran melalui Virtual Account
+                        </span>
+
+                    </div>
+
+                </label>
+
+
+
+                <div class="total-box">
+
+                    <span class="total-label">
+                        Total Pembayaran
+                    </span>
+
+                    <span
+                        class="total-price"
+                        id="total">
+
+                        IDR 0
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="notice">
+
+                    Setelah pembayaran dikonfirmasi,
+                    pesanan akan masuk ke Admin untuk
+                    diperiksa sebelum tiket disetujui.
+
+                </div>
+
+
+
+                <button
+                    class="pay-btn"
+                    onclick="konfirmasiPembayaran()">
+
+                    Konfirmasi Pembayaran
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <footer>
+
+        <p>
+            © 2026 SoraTix
+        </p>
+
+    </footer>
+
+
+
+    <script>
+
+
+        /* =========================
+           AMBIL DATA ORDER
+        ========================== */
+
+        const order =
+            JSON.parse(
+                localStorage.getItem(
+                    "orderTerbaru"
+                )
+            );
+
+
+        /* =========================
+           TAMPILKAN DATA
+        ========================== */
+
+        if (order) {
+
+
+            document.getElementById(
+                "idOrder"
+            ).innerText =
+                order.idOrder;
+
+
+            document.getElementById(
+                "customer"
+            ).innerText =
+                order.customer;
+
+
+            document.getElementById(
+                "kodeTiket"
+            ).innerText =
+                order.kodeTiket;
+
+
+            document.getElementById(
+                "rute"
+            ).innerText =
+                order.asal +
+                " (" +
+                order.kodeAsal +
+                ") → " +
+                order.tujuan +
+                " (" +
+                order.kodeTujuan +
+                ")";
+
+
+            document.getElementById(
+                "tanggal"
+            ).innerText =
+                order.tanggal;
+
+
+            document.getElementById(
+                "jam"
+            ).innerText =
+                order.jamBerangkat +
+                " - " +
+                order.jamTiba;
+
+
+            document.getElementById(
+                "kelas"
+            ).innerText =
+                order.kelas;
+
+
+            document.getElementById(
+                "jumlah"
+            ).innerText =
+                order.jumlah +
+                " tiket";
+
+
+            document.getElementById(
+                "status"
+            ).innerText =
+                order.status;
+
+
+            document.getElementById(
+                "total"
+            ).innerText =
+                formatRupiah(
+                    order.total
+                );
+
+        }
+
+
+
+        /* =========================
+           FORMAT RUPIAH
+        ========================== */
+
+        function formatRupiah(angka) {
+
+            return "IDR " +
+                Number(angka)
+                    .toLocaleString("id-ID");
+
+        }
+
+
+
+        /* =========================
+           KONFIRMASI PEMBAYARAN
+        ========================== */
+
+        function konfirmasiPembayaran() {
+
+
+            if (!order) {
+
+                alert(
+                    "Data order tidak ditemukan."
+                );
+
+                return;
+
+            }
+
+
+            const metode =
+                document.querySelector(
+                    'input[name="payment"]:checked'
+                );
+
+
+            if (!metode) {
+
+                alert(
+                    "Silakan pilih metode pembayaran terlebih dahulu."
+                );
+
+                return;
+
+            }
+
+
+
+            /* =====================
+               UPDATE ORDER
+            ====================== */
+
+            order.metodePembayaran =
+                metode.value;
+
+
+            order.status =
+                "Menunggu Konfirmasi Admin";
+
+
+            order.statusTransaksi =
+                "Menunggu Konfirmasi";
+
+
+            order.idTransaksi =
+                "TRX" +
+                Date.now();
+
+
+
+            /* =====================
+               SIMPAN ORDER
+            ====================== */
+
+            localStorage.setItem(
+                "orderTerbaru",
+                JSON.stringify(order)
+            );
+
+
+
+            /* =====================
+               SIMPAN TRANSAKSI
+            ====================== */
+
+            localStorage.setItem(
+                "transaksiTerbaru",
+                JSON.stringify({
+
+                    idTransaksi:
+                        order.idTransaksi,
+
+                    idOrder:
+                        order.idOrder,
+
+                    customer:
+                        order.customer,
+
+                    total:
+                        order.total,
+
+                    metodePembayaran:
+                        order.metodePembayaran,
+
+                    status:
+                        "Menunggu Konfirmasi Admin"
+
+                })
+            );
+
+
+
+            alert(
+                "Pembayaran berhasil dikirim. Pesanan menunggu konfirmasi Admin."
+            );
+
+
+            /* =====================
+               KEMBALI KE HOME
+            ====================== */
+
+           window.location.href =
+            "status-pesanan.html";
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Admin - SoraTix</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            background-color: #dff6f7;
+
+            color: #000000;
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           LAYOUT
+        ========================== */
+
+        .admin-layout {
+
+            display: flex;
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================== */
+
+        .sidebar {
+
+            width: 235px;
+
+            background-color: #ffffff;
+
+            padding: 35px 15px;
+
+            flex-shrink: 0;
+        }
+
+
+        .sidebar-logo {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .sidebar-logo img {
+
+            width: 50px;
+
+            height: 50px;
+
+            object-fit: contain;
+
+            margin-bottom: 10px;
+        }
+
+
+        .sidebar-logo h1 {
+
+            font-size: 22px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .sidebar-logo p {
+
+            font-size: 11px;
+
+            color: #555555;
+        }
+
+
+        /* =========================
+           MENU
+        ========================== */
+
+        .menu {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+
+        .menu button {
+
+            width: 100%;
+
+            border: none;
+
+            background-color: transparent;
+
+            text-align: left;
+
+            padding: 13px 15px;
+
+            border-radius: 8px;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+
+        .menu button:hover {
+
+            background-color: #eefafa;
+        }
+
+
+        .menu button.active {
+
+            background-color: #a8dfe3;
+        }
+
+
+        .logout {
+
+            color: #d33b3b !important;
+
+            margin-top: 25px;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        .main {
+
+            flex: 1;
+
+            padding: 35px;
+
+            min-width: 0;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .top-header {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            margin-bottom: 30px;
+        }
+
+
+        .top-header h2 {
+
+            font-size: 29px;
+
+            font-weight: normal;
+
+            margin-bottom: 5px;
+        }
+
+
+        .top-header p {
+
+            font-size: 13px;
+
+            color: #555555;
+        }
+
+
+        .admin-name {
+
+            background-color: #ffffff;
+
+            border-radius: 9px;
+
+            padding: 10px 20px;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           PAGE
+        ========================== */
+
+        .page {
+
+            display: none;
+        }
+
+
+        .page.active {
+
+            display: block;
+        }
+
+
+        /* =========================
+           STAT
+        ========================== */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .stat-card {
+
+            background-color: #ffffff;
+
+            border-radius: 13px;
+
+            padding: 23px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, 0.06);
+        }
+
+
+        .stat-card p {
+
+            font-size: 12px;
+
+            color: #666666;
+
+            margin-bottom: 12px;
+        }
+
+
+        .stat-card h3 {
+
+            font-size: 28px;
+
+            font-weight: normal;
+        }
+
+
+        /* =========================
+           CARD
+        ========================== */
+
+        .card {
+
+            background-color: #ffffff;
+
+            border-radius: 13px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, 0.06);
+
+            overflow-x: auto;
+        }
+
+
+        .card-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+
+        .card-header h3 {
+
+            font-size: 21px;
+
+            font-weight: normal;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================== */
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 750px;
+        }
+
+
+        th {
+
+            background-color: #f1f8f9;
+
+            padding: 13px;
+
+            text-align: left;
+
+            font-size: 12px;
+
+            font-weight: normal;
+        }
+
+
+        td {
+
+            padding: 14px 13px;
+
+            border-bottom:
+                1px solid #eeeeee;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           STATUS
+        ========================== */
+
+        .status {
+
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 6px;
+
+            font-size: 10px;
+        }
+
+
+        .tersedia {
+
+            background-color: #dff5e5;
+
+            color: #24753a;
+        }
+
+
+        .menunggu {
+
+            background-color: #fff0c9;
+
+            color: #8b6500;
+        }
+
+
+        .disetujui {
+
+            background-color: #dff5e5;
+
+            color: #24753a;
+        }
+
+
+        .ditolak {
+
+            background-color: #ffdede;
+
+            color: #a52c2c;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
+
+        .btn {
+
+            border: none;
+
+            border-radius: 6px;
+
+            padding: 7px 11px;
+
+            font-family: inherit;
+
+            font-size: 11px;
+
+            cursor: pointer;
+
+            margin-right: 4px;
+        }
+
+
+        .btn-acc {
+
+            background-color: #a8dfb5;
+        }
+
+
+        .btn-acc:hover {
+
+            background-color: #8ed2a0;
+        }
+
+
+        .btn-tolak {
+
+            background-color: #f2b4b4;
+        }
+
+
+        .btn-tolak:hover {
+
+            background-color: #e99b9b;
+        }
+
+
+        .btn-add {
+
+            background-color: #a8dfe3;
+
+            padding: 10px 15px;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           EMPTY
+        ========================== */
+
+        .empty {
+
+            text-align: center;
+
+            padding: 45px 20px;
+
+            color: #777777;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MODAL TAMBAH TIKET
+        ========================== */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background-color:
+                rgba(0, 0, 0, 0.4);
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 100;
+        }
+
+
+        .modal-content {
+
+            width: 90%;
+
+            max-width: 430px;
+
+            background-color: #ffffff;
+
+            border-radius: 14px;
+
+            padding: 25px;
+        }
+
+
+        .modal-content h3 {
+
+            font-size: 21px;
+
+            font-weight: normal;
+
+            margin-bottom: 20px;
+        }
+
+
+        .form-group {
+
+            margin-bottom: 15px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-size: 12px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            height: 40px;
+
+            border:
+                1px solid #c7d9df;
+
+            border-radius: 7px;
+
+            padding: 0 10px;
+
+            font-family: inherit;
+
+            outline: none;
+        }
+
+
+        .modal-buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+
+        .modal-buttons button {
+
+            flex: 1;
+
+            height: 42px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            font-family: inherit;
+
+            cursor: pointer;
+        }
+
+
+        .save-btn {
+
+            background-color: #a8dfe3;
+        }
+
+
+        .cancel-btn {
+
+            background-color: #eeeeee;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .admin-layout {
+
+                flex-direction: column;
+            }
+
+
+            .sidebar {
+
+                width: 100%;
+
+                padding: 20px;
+            }
+
+
+            .sidebar-logo {
+
+                margin-bottom: 20px;
+            }
+
+
+            .menu {
+
+                display: grid;
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .logout {
+
+                margin-top: 0;
+            }
+
+
+            .main {
+
+                padding: 20px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .top-header h2 {
+
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="admin-layout">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-logo">
+
+            <img
+                src="assets/logo.png"
+                alt="SoraTix">
+
+            <h1>
+                SoraTix
+            </h1>
+
+            <p>
+                ADMIN DASHBOARD
+            </p>
+
+        </div>
+
+
+        <nav class="menu">
+
+
+            <button
+                class="active"
+                onclick="bukaHalaman('dashboard', this)">
+
+                Dashboard
+
+            </button>
+
+
+            <button
+                onclick="bukaHalaman('tiket', this)">
+
+                Data Tiket
+
+            </button>
+
+
+            <button
+                onclick="bukaHalaman('order', this)">
+
+                Data Order
+
+            </button>
+
+
+            <button
+                onclick="bukaHalaman('transaksi', this)">
+
+                Transaksi
+
+            </button>
+
+
+            <button
+                class="logout"
+                onclick="logout()">
+
+                Logout
+
+            </button>
+
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+
+        <header class="top-header">
+
+            <div>
+
+                <h2>
+                    Dashboard Admin
+                </h2>
+
+                <p>
+                    Kelola data perjalanan SoraTix
+                </p>
+
+            </div>
+
+
+            <div class="admin-name">
+                Admin
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             DASHBOARD
+        ========================== -->
+
+        <section
+            id="dashboard"
+            class="page active">
+
+
+            <div class="stats">
+
+
+                <div class="stat-card">
+
+                    <p>
+                        Total Tiket
+                    </p>
+
+                    <h3 id="totalTiket">
+                        3
+                    </h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <p>
+                        Total Order
+                    </p>
+
+                    <h3 id="totalOrder">
+                        0
+                    </h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <p>
+                        Transaksi
+                    </p>
+
+                    <h3 id="totalTransaksi">
+                        0
+                    </h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <p>
+                        Customer
+                    </p>
+
+                    <h3 id="totalCustomer">
+                        0
+                    </h3>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="card">
+
+
+                <div class="card-header">
+
+                    <h3>
+                        Transaksi Terbaru
+                    </h3>
+
+                </div>
+
+
+                <div id="dashboardTransaction">
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             DATA TIKET
+        ========================== -->
+
+        <section
+            id="tiket"
+            class="page">
+
+
+            <div class="card">
+
+
+                <div class="card-header">
+
+                    <h3>
+                        Data Tiket
+                    </h3>
+
+
+                    <button
+                        class="btn btn-add"
+                        onclick="bukaModal()">
+
+                        + Tambah Tiket
+
+                    </button>
+
+                </div>
+
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Kode
+                            </th>
+
+                            <th>
+                                Tujuan
+                            </th>
+
+                            <th>
+                                Maskapai
+                            </th>
+
+                            <th>
+                                Harga
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelTiket">
+
+                        <tr>
+
+                            <td>
+                                ST001
+                            </td>
+
+                            <td>
+                                Jakarta - Bali
+                            </td>
+
+                            <td>
+                                SoraTix Airlines
+                            </td>
+
+                            <td>
+                                IDR 1.250.000
+                            </td>
+
+                            <td>
+                                <span class="status tersedia">
+                                    Tersedia
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                ST002
+                            </td>
+
+                            <td>
+                                Jakarta - Bangkok
+                            </td>
+
+                            <td>
+                                SoraTix Airlines
+                            </td>
+
+                            <td>
+                                IDR 1.800.000
+                            </td>
+
+                            <td>
+                                <span class="status tersedia">
+                                    Tersedia
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                ST003
+                            </td>
+
+                            <td>
+                                Jakarta - Tokyo
+                            </td>
+
+                            <td>
+                                SoraTix Airlines
+                            </td>
+
+                            <td>
+                                IDR 5.000.000
+                            </td>
+
+                            <td>
+                                <span class="status tersedia">
+                                    Tersedia
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             DATA ORDER
+        ========================== -->
+
+        <section
+            id="order"
+            class="page">
+
+
+            <div class="card">
+
+
+                <div class="card-header">
+
+                    <h3>
+                        Data Order
+                    </h3>
+
+                </div>
+
+
+                <div id="orderContainer">
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             TRANSAKSI
+        ========================== -->
+
+        <section
+            id="transaksi"
+            class="page">
+
+
+            <div class="card">
+
+
+                <div class="card-header">
+
+                    <h3>
+                        Data Transaksi
+                    </h3>
+
+                </div>
+
+
+                <div id="transaksiContainer">
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================
+     MODAL TAMBAH TIKET
+========================== -->
+
+<div
+    class="modal"
+    id="modalTiket">
+
+
+    <div class="modal-content">
+
+
+        <h3>
+            Tambah Tiket
+        </h3>
+
+
+        <div class="form-group">
+
+            <label>
+                Kode Tiket
+            </label>
+
+            <input
+                type="text"
+                id="inputKode"
+                placeholder="ST004">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Tujuan
+            </label>
+
+            <input
+                type="text"
+                id="inputTujuan"
+                placeholder="Jakarta - Paris">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Maskapai
+            </label>
+
+            <input
+                type="text"
+                id="inputMaskapai"
+                placeholder="SoraTix Airlines">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Harga
+            </label>
+
+            <input
+                type="number"
+                id="inputHarga"
+                placeholder="5000000">
+
+        </div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="cancel-btn"
+                onclick="tutupModal()">
+
+                Batal
+
+            </button>
+
+
+            <button
+                class="save-btn"
+                onclick="tambahTiket()">
+
+                Simpan
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+    /* =========================
+       DATA TIKET
+    ========================== */
+
+    let daftarTiket = [
+
+        {
+            kode: "ST001",
+            tujuan: "Jakarta - Bali",
+            maskapai: "SoraTix Airlines",
+            harga: 1250000
+        },
+
+        {
+            kode: "ST002",
+            tujuan: "Jakarta - Bangkok",
+            maskapai: "SoraTix Airlines",
+            harga: 1800000
+        },
+
+        {
+            kode: "ST003",
+            tujuan: "Jakarta - Tokyo",
+            maskapai: "SoraTix Airlines",
+            harga: 5000000
+        }
+
+    ];
+
+
+
+    /* =========================
+       PINDAH HALAMAN
+    ========================== */
+
+    function bukaHalaman(nama, tombol) {
+
+
+        const semuaHalaman =
+            document.querySelectorAll(".page");
+
+
+        semuaHalaman.forEach(
+            function(halaman) {
+
+                halaman.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        document.getElementById(
+            nama
+        ).classList.add("active");
+
+
+        const semuaTombol =
+            document.querySelectorAll(
+                ".menu button"
+            );
+
+
+        semuaTombol.forEach(
+            function(btn) {
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        tombol.classList.add("active");
+
+
+        if (nama === "order") {
+
+            tampilkanOrder();
+
+        }
+
+
+        if (nama === "transaksi") {
+
+            tampilkanTransaksi();
+
+        }
+
+
+        if (nama === "dashboard") {
+
+            updateDashboard();
+
+        }
+
+    }
+
+
+
+    /* =========================
+       FORMAT RUPIAH
+    ========================== */
+
+    function rupiah(angka) {
+
+        return "IDR " +
+            Number(angka)
+            .toLocaleString("id-ID");
+
+    }
+
+
+
+    /* =========================
+       AMBIL ORDER
+    ========================== */
+
+    function ambilOrder() {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "orderTerbaru"
+            )
+        );
+
+    }
+
+
+
+    /* =========================
+       AMBIL TRANSAKSI
+    ========================== */
+
+    function ambilTransaksi() {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "transaksiTerbaru"
+            )
+        );
+
+    }
+
+
+
+    /* =========================
+       DATA ORDER
+    ========================== */
+
+    function tampilkanOrder() {
+
+
+        const container =
+            document.getElementById(
+                "orderContainer"
+            );
+
+
+        const order =
+            ambilOrder();
+
+
+        if (!order) {
+
+            container.innerHTML = `
+                
+                <div class="empty">
+                    Belum ada order dari customer.
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        container.innerHTML = `
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID Order</th>
+
+                        <th>Customer</th>
+
+                        <th>Tiket</th>
+
+                        <th>Rute</th>
+
+                        <th>Tanggal</th>
+
+                        <th>Total</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            ${order.idOrder}
+                        </td>
+
+                        <td>
+                            ${order.customer}
+                        </td>
+
+                        <td>
+                            ${order.kodeTiket}
+                        </td>
+
+                        <td>
+                            ${order.asal}
+                            →
+                            ${order.tujuan}
+                        </td>
+
+                        <td>
+                            ${order.tanggal}
+                        </td>
+
+                        <td>
+                            ${rupiah(order.total)}
+                        </td>
+
+                        <td>
+                            ${buatStatus(order.status)}
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        `;
+
+    }
+
+
+
+    /* =========================
+       DATA TRANSAKSI
+    ========================== */
+
+    function tampilkanTransaksi() {
+
+
+        const container =
+            document.getElementById(
+                "transaksiContainer"
+            );
+
+
+        const transaksi =
+            ambilTransaksi();
+
+
+        if (!transaksi) {
+
+            container.innerHTML = `
+
+                <div class="empty">
+                    Belum ada transaksi dari customer.
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        const sudahDiproses =
+            transaksi.status ===
+                "Disetujui" ||
+            transaksi.status ===
+                "Ditolak";
+
+
+        container.innerHTML = `
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID Transaksi</th>
+
+                        <th>ID Order</th>
+
+                        <th>Customer</th>
+
+                        <th>Metode</th>
+
+                        <th>Total</th>
+
+                        <th>Status</th>
+
+                        <th>Aksi</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            ${transaksi.idTransaksi}
+                        </td>
+
+                        <td>
+                            ${transaksi.idOrder}
+                        </td>
+
+                        <td>
+                            ${transaksi.customer}
+                        </td>
+
+                        <td>
+                            ${transaksi.metodePembayaran}
+                        </td>
+
+                        <td>
+                            ${rupiah(transaksi.total)}
+                        </td>
+
+                        <td>
+                            ${buatStatus(
+                                transaksi.status
+                            )}
+                        </td>
+
+                        <td>
+
+                            ${
+                                sudahDiproses
+
+                                ?
+
+                                `<span style="font-size:11px;color:#777;">
+                                    Sudah diproses
+                                </span>`
+
+                                :
+
+                                `
+                                <button
+                                    class="btn btn-acc"
+                                    onclick="accTransaksi()">
+
+                                    ACC
+
+                                </button>
+
+                                <button
+                                    class="btn btn-tolak"
+                                    onclick="tolakTransaksi()">
+
+                                    Tolak
+
+                                </button>
+                                `
+                            }
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        `;
+
+    }
+
+
+
+    /* =========================
+       STATUS
+    ========================== */
+
+    function buatStatus(status) {
+
+
+        let kelas = "menunggu";
+
+
+        if (status === "Disetujui") {
+
+            kelas = "disetujui";
+
+        }
+
+
+        if (status === "Ditolak") {
+
+            kelas = "ditolak";
+
+        }
+
+
+        return `
+
+            <span class="status ${kelas}">
+
+                ${status}
+
+            </span>
+
+        `;
+
+    }
+
+
+
+    /* =========================
+       ACC TRANSAKSI
+    ========================== */
+
+    function accTransaksi() {
+
+
+        const transaksi =
+            ambilTransaksi();
+
+
+        const order =
+            ambilOrder();
+
+
+        if (!transaksi) {
+
+            return;
+
+        }
+
+
+        transaksi.status =
+            "Disetujui";
+
+
+        if (order) {
+
+            order.status =
+                "Disetujui";
+
+
+            order.statusTransaksi =
+                "Disetujui";
+
+
+            localStorage.setItem(
+
+                "orderTerbaru",
+
+                JSON.stringify(order)
+
+            );
+
+        }
+
+
+        localStorage.setItem(
+
+            "transaksiTerbaru",
+
+            JSON.stringify(transaksi)
+
+        );
+
+
+        localStorage.setItem(
+    "notifCustomer",
+    JSON.stringify({
+
+        judul:
+        "Pesanan Berhasil Disetujui",
+
+        pesan:
+        "Pembayaran kamu sudah dikonfirmasi oleh Admin SoraTix.",
+
+        status:
+        "Disetujui",
+
+        waktu:
+        new Date().toLocaleString()
+
+    })
+);
+
+
+alert(
+"Pesanan berhasil disetujui."
+);
+
+
+tampilkanTransaksi();
+
+updateDashboard();
+}
+
+
+
+    /* =========================
+       TOLAK TRANSAKSI
+    ========================== */
+
+    function tolakTransaksi() {
+
+
+        const transaksi =
+            ambilTransaksi();
+
+
+        const order =
+            ambilOrder();
+
+
+        if (!transaksi) {
+
+            return;
+
+        }
+
+
+        transaksi.status =
+            "Ditolak";
+
+
+        if (order) {
+
+            order.status =
+                "Ditolak";
+
+
+            order.statusTransaksi =
+                "Ditolak";
+
+
+            localStorage.setItem(
+
+                "orderTerbaru",
+
+                JSON.stringify(order)
+
+            );
+
+        }
+
+
+        localStorage.setItem(
+
+            "transaksiTerbaru",
+
+            JSON.stringify(transaksi)
+
+        );
+
+
+       localStorage.setItem(
+    "notifCustomer",
+    JSON.stringify({
+
+        judul:
+        "Pesanan Ditolak",
+
+        pesan:
+        "Mohon maaf, transaksi tiket kamu ditolak oleh Admin.",
+
+        status:
+        "Ditolak",
+
+        waktu:
+        new Date().toLocaleString()
+
+    })
+);
+
+
+alert(
+"Pesanan ditolak."
+);
+
+        tampilkanTransaksi();
+
+        updateDashboard();
+
+    }
+
+
+
+    /* =========================
+       DASHBOARD
+    ========================== */
+
+    function updateDashboard() {
+
+
+        const order =
+            ambilOrder();
+
+
+        const transaksi =
+            ambilTransaksi();
+
+
+        document.getElementById(
+            "totalTiket"
+        ).innerText =
+            daftarTiket.length;
+
+
+        document.getElementById(
+            "totalOrder"
+        ).innerText =
+            order ? 1 : 0;
+
+
+        document.getElementById(
+            "totalTransaksi"
+        ).innerText =
+            transaksi ? 1 : 0;
+
+
+        document.getElementById(
+            "totalCustomer"
+        ).innerText =
+            order ? 1 : 0;
+
+
+
+        const dashboard =
+            document.getElementById(
+                "dashboardTransaction"
+            );
+
+
+        if (!transaksi) {
+
+            dashboard.innerHTML = `
+
+                <div class="empty">
+                    Belum ada transaksi.
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        dashboard.innerHTML = `
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID Transaksi
+                        </th>
+
+                        <th>
+                            Customer
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            ${transaksi.idTransaksi}
+                        </td>
+
+                        <td>
+                            ${transaksi.customer}
+                        </td>
+
+                        <td>
+                            ${rupiah(
+                                transaksi.total
+                            )}
+                        </td>
+
+                        <td>
+                            ${buatStatus(
+                                transaksi.status
+                            )}
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        `;
+
+    }
+
+
+
+    /* =========================
+       MODAL TIKET
+    ========================== */
+
+    function bukaModal() {
+
+        document.getElementById(
+            "modalTiket"
+        ).style.display = "flex";
+
+    }
+
+
+    function tutupModal() {
+
+        document.getElementById(
+            "modalTiket"
+        ).style.display = "none";
+
+    }
+
+
+
+    /* =========================
+       TAMBAH TIKET
+    ========================== */
+
+    function tambahTiket() {
+
+
+        const kode =
+            document.getElementById(
+                "inputKode"
+            ).value.trim();
+
+
+        const tujuan =
+            document.getElementById(
+                "inputTujuan"
+            ).value.trim();
+
+
+        const maskapai =
+            document.getElementById(
+                "inputMaskapai"
+            ).value.trim();
+
+
+        const harga =
+            document.getElementById(
+                "inputHarga"
+            ).value;
+
+
+        if (
+            !kode ||
+            !tujuan ||
+            !maskapai ||
+            !harga
+        ) {
+
+            alert(
+                "Semua data tiket harus diisi."
+            );
+
+            return;
+
+        }
+
+
+        daftarTiket.push({
+
+            kode: kode,
+
+            tujuan: tujuan,
+
+            maskapai: maskapai,
+
+            harga: Number(harga)
+
+        });
+
+
+        renderTiket();
+
+
+        tutupModal();
+
+
+        document.getElementById(
+            "inputKode"
+        ).value = "";
+
+
+        document.getElementById(
+            "inputTujuan"
+        ).value = "";
+
+
+        document.getElementById(
+            "inputMaskapai"
+        ).value = "";
+
+
+        document.getElementById(
+            "inputHarga"
+        ).value = "";
+
+
+        updateDashboard();
+
+
+        alert(
+            "Tiket berhasil ditambahkan."
+        );
+
+    }
+
+
+
+    /* =========================
+       RENDER TIKET
+    ========================== */
+
+    function renderTiket() {
+
+
+        const tbody =
+            document.getElementById(
+                "tabelTiket"
+            );
+
+
+        tbody.innerHTML = "";
+
+
+        daftarTiket.forEach(
+            function(tiket) {
+
+
+                tbody.innerHTML += `
+
+                    <tr>
+
+                        <td>
+                            ${tiket.kode}
+                        </td>
+
+                        <td>
+                            ${tiket.tujuan}
+                        </td>
+
+                        <td>
+                            ${tiket.maskapai}
+                        </td>
+
+                        <td>
+                            ${rupiah(
+                                tiket.harga
+                            )}
+                        </td>
+
+                        <td>
+
+                            <span
+                                class="status tersedia">
+
+                                Tersedia
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+
+    /* =========================
+       LOGOUT
+    ========================== */
+
+    function logout() {
+
+
+        localStorage.removeItem(
+            "isLogin"
+        );
+
+
+        window.location.href =
+            "index.html";
+
+    }
+
+
+
+    /* =========================
+       LOAD AWAL
+    ========================== */
+
+    updateDashboard();
+
+    renderTiket();
+
+
+</script>
+
+
+</body>
+
+</html>

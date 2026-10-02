@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SoraTix - Tiket Perjalanan</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <img
+            src="assets/hero.jpg"
+            alt="Travel">
+
+
+        <nav class="navbar">
+
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <img
+                    src="assets/logo.png"
+                    alt="SoraTix">
+
+            </div>
+
+
+            <!-- LOGIN / LOGOUT -->
+
+            <div
+                class="login-area"
+                id="loginArea">
+
+                <a
+                    href="login.html"
+                    class="login-btn">
+
+                    Login / Signin
+
+                </a>
+
+            </div>
+
+
+        </nav>
+
+    </section>
+
+
+
+    <!-- =========================
+         SEARCH
+    ========================== -->
+
+    <section class="search-container">
+
+
+        <h2>
+            Pilih perjalanan Kamu
+        </h2>
+
+
+        <div class="search-form">
+
+
+            <!-- KEBERANGKATAN -->
+
+            <button
+                class="location-box"
+                onclick="bukaPilihan('keberangkatan')">
+
+                <span class="icon">
+                    ✈
+                </span>
+
+
+                <span class="field-content">
+
+                    <span class="field-label">
+                        Keberangkatan
+                    </span>
+
+
+                    <span
+                        class="field-value"
+                        id="keberangkatan">
+
+                        Pilih kota
+
+                    </span>
+
+                </span>
+
+            </button>
+
+
+
+            <!-- SWAP -->
+
+            <button
+                class="swap-btn"
+                onclick="tukarKota()">
+
+                ⇄
+
+            </button>
+
+
+
+            <!-- TUJUAN -->
+
+            <button
+                class="location-box"
+                onclick="bukaPilihan('tujuan')">
+
+                <span class="icon">
+                    ✈
+                </span>
+
+
+                <span class="field-content">
+
+                    <span class="field-label">
+                        Tujuan
+                    </span>
+
+
+                    <span
+                        class="field-value"
+                        id="tujuan">
+
+                        Pilih kota
+
+                    </span>
+
+                </span>
+
+            </button>
+
+
+
+            <!-- TANGGAL -->
+
+            <button
+                class="date-box"
+                onclick="bukaTanggal()">
+
+                <span class="icon">
+                    ▦
+                </span>
+
+
+                <span class="field-content">
+
+                    <span class="field-label">
+                        Tanggal
+                    </span>
+
+
+                    <span
+                        class="field-value"
+                        id="tanggal">
+
+                        Pilih tanggal
+
+                    </span>
+
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- CARI -->
+
+        <button
+            class="search-btn"
+            onclick="cariPerjalanan()">
+
+            Yuk cari perjalananmu!
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         POPULER
+    ========================== -->
+
+    <section class="popular">
+
+
+        <div class="popular-header">
+
+            <h2>
+                Paling Populer
+            </h2>
+
+        </div>
+
+
+
+        <div class="popular-carousel">
+
+
+            <!-- PANAH KIRI -->
+
+            <button
+                class="popular-arrow left"
+                onclick="geserPopuler(-1)">
+
+                ‹
+
+            </button>
+
+
+
+            <!-- LIST -->
+
+            <div
+                class="popular-list"
+                id="popularList">
+
+
+                <!-- BALI -->
+
+                <div class="destination-card">
+
+                    <img
+                        src="assets/bali.jpg"
+                        alt="Bali">
+
+                    <div class="destination-info">
+
+                        <h3>
+                            BALI
+                        </h3>
+
+                        <p>
+                            MULAI DARI
+                        </p>
+
+                        <strong>
+                            IDR. 1.000.000,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MALDIVES -->
+
+                <div class="destination-card">
+
+                    <img
+                        src="assets/maldives.jpg"
+                        alt="Maldives">
+
+                    <div class="destination-info">
+
+                        <h3>
+                            MALDIVES
+                        </h3>
+
+                        <p>
+                            MULAI DARI
+                        </p>
+
+                        <strong>
+                            IDR. 2.500.000,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BANGKOK -->
+
+                <div class="destination-card">
+
+                    <img
+                        src="assets/bkk.jpg"
+                        alt="Bangkok">
+
+                    <div class="destination-info">
+
+                        <h3>
+                            BANGKOK
+                        </h3>
+
+                        <p>
+                            MULAI DARI
+                        </p>
+
+                        <strong>
+                            IDR. 1.800.000,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ITALY -->
+
+                <div class="destination-card">
+
+                    <img
+                        src="assets/italy.jpg"
+                        alt="Italy">
+
+                    <div class="destination-info">
+
+                        <h3>
+                            ITALY
+                        </h3>
+
+                        <p>
+                            MULAI DARI
+                        </p>
+
+                        <strong>
+                            IDR. 7.500.000,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TOKYO -->
+
+                <div class="destination-card">
+
+                    <img
+                        src="assets/tokyo.jpg"
+                        alt="Tokyo">
+
+                    <div class="destination-info">
+
+                        <h3>
+                            TOKYO
+                        </h3>
+
+                        <p>
+                            MULAI DARI
+                        </p>
+
+                        <strong>
+                            IDR. 5.000.000,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PARIS -->
+
+                <div class="destination-card">
+
+                    <img
+                        src="assets/paris.jpg"
+                        alt="Paris">
+
+                    <div class="destination-info">
+
+                        <h3>
+                            PARIS
+                        </h3>
+
+                        <p>
+                            MULAI DARI
+                        </p>
+
+                        <strong>
+                            IDR. 8.000.000,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SEOUL -->
+
+                <div class="destination-card">
+
+                    <img
+                        src="assets/seoul.jpg"
+                        alt="Seoul">
+
+                    <div class="destination-info">
+
+                        <h3>
+                            SEOUL
+                        </h3>
+
+                        <p>
+                            MULAI DARI
+                        </p>
+
+                        <strong>
+                            IDR. 4.500.000,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DUBAI -->
+
+                <div class="destination-card">
+
+                    <img
+                        src="assets/dubai.jpg"
+                        alt="Dubai">
+
+                    <div class="destination-info">
+
+                        <h3>
+                            DUBAI
+                        </h3>
+
+                        <p>
+                            MULAI DARI
+                        </p>
+
+                        <strong>
+                            IDR. 6.500.000,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- PANAH KANAN -->
+
+            <button
+                class="popular-arrow right"
+                onclick="geserPopuler(1)">
+
+                ›
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+
+        <div class="footer-links">
+
+            <a href="#">
+                Tentang Kami
+            </a>
+
+            <a href="#">
+                Kontak
+            </a>
+
+            <a href="#">
+                FAQ
+            </a>
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+            <a href="#">
+                Instagram
+            </a>
+
+        </div>
+
+
+        <p>
+            © 2026 SoraTix
+        </p>
+
+
+    </footer>
+
+
+</div>
+
+
+
+<!-- MODAL KOTA -->
+
+<div
+    class="modal"
+    id="kotaModal">
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="close-btn"
+            onclick="tutupModal()">
+
+            ×
+
+        </button>
+
+
+        <h2 id="judulModal">
+            Pilih Kota
+        </h2>
+
+
+
+        <div class="airport-list">
+
+
+            <button
+                class="airport-item"
+                onclick="pilihKota('Jakarta', 'Soekarno-Hatta', 'CGK')">
+
+                <strong>
+                    Jakarta - CGK
+                </strong>
+
+                <small>
+                    Soekarno-Hatta International Airport
+                </small>
+
+            </button>
+
+
+
+            <button
+                class="airport-item"
+                onclick="pilihKota('Jakarta', 'Halim Perdanakusuma', 'HLP')">
+
+                <strong>
+                    Jakarta - HLP
+                </strong>
+
+                <small>
+                    Halim Perdanakusuma Airport
+                </small>
+
+            </button>
+
+
+
+            <button
+                class="airport-item"
+                onclick="pilihKota('Bandung', 'Husein Sastranegara', 'BDO')">
+
+                <strong>
+                    Bandung - BDO
+                </strong>
+
+                <small>
+                    Husein Sastranegara Airport
+                </small>
+
+            </button>
+
+
+
+            <button
+                class="airport-item"
+                onclick="pilihKota('Surabaya', 'Juanda', 'SUB')">
+
+                <strong>
+                    Surabaya - SUB
+                </strong>
+
+                <small>
+                    Juanda International Airport
+                </small>
+
+            </button>
+
+
+
+            <button
+                class="airport-item"
+                onclick="pilihKota('Yogyakarta', 'Yogyakarta International', 'YIA')">
+
+                <strong>
+                    Yogyakarta - YIA
+                </strong>
+
+                <small>
+                    Yogyakarta International Airport
+                </small>
+
+            </button>
+
+
+
+            <button
+                class="airport-item"
+                onclick="pilihKota('Denpasar', 'I Gusti Ngurah Rai', 'DPS')">
+
+                <strong>
+                    Denpasar - DPS
+                </strong>
+
+                <small>
+                    I Gusti Ngurah Rai International Airport
+                </small>
+
+            </button>
+
+
+
+            <button
+                class="airport-item"
+                onclick="pilihKota('Medan', 'Kualanamu', 'KNO')">
+
+                <strong>
+                    Medan - KNO
+                </strong>
+
+                <small>
+                    Kualanamu International Airport
+                </small>
+
+            </button>
+
+
+
+            <button
+                class="airport-item"
+                onclick="pilihKota('Makassar', 'Sultan Hasanuddin', 'UPG')">
+
+                <strong>
+                    Makassar - UPG
+                </strong>
+
+                <small>
+                    Sultan Hasanuddin International Airport
+                </small>
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

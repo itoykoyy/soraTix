@@ -1,0 +1,1269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =================================
+   PAGE
+================================= */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #dff6f7;
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.hero > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* =================================
+   NAVBAR
+================================= */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+}
+
+
+/* =================================
+   LOGO
+================================= */
+
+.logo {
+    position: absolute;
+
+    top: 45px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.logo img {
+    width: 90px;
+    height: 90px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* =================================
+   LOGIN / LOGOUT
+================================= */
+
+.login-area {
+    position: absolute;
+
+    top: 35px;
+    right: 7%;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.login-btn {
+    color: #000000;
+
+    text-decoration: none;
+
+    font-size: 15px;
+}
+
+
+.login-btn:hover {
+    text-decoration: underline;
+}
+
+
+.logout-btn {
+    border: none;
+
+    background-color: transparent;
+
+    color: #000000;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+
+.logout-btn:hover {
+    text-decoration: underline;
+}
+
+/* =================================
+   LOGIN PAGE
+================================= */
+
+.login-body {
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: #dff6f7;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+}
+
+
+/* =================================
+   LOGIN CARD
+================================= */
+
+.login-card {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    background-color: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 45px 50px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =================================
+   LOGIN LOGO
+================================= */
+
+.login-logo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 30px;
+
+}
+
+
+.login-logo img {
+
+    width: 100px;
+
+    height: 100px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin-bottom: 10px;
+
+}
+
+
+.login-logo h1 {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    margin: 0;
+
+}
+
+
+/* =================================
+   LOGIN TITLE
+================================= */
+
+.login-card h2 {
+
+    text-align: center;
+
+    font-size: 28px;
+
+    font-weight: normal;
+
+    margin-bottom: 8px;
+
+}
+
+
+.login-subtitle {
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #777777;
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =================================
+   INPUT
+================================= */
+
+.input-group {
+
+    margin-bottom: 18px;
+
+}
+
+
+.input-group label {
+
+    display: block;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.input-group input {
+
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 14px;
+
+    border: 1px solid #c6d7df;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    background-color: #ffffff;
+
+}
+
+
+.input-group input:focus {
+
+    border-color: #8acfd4;
+
+}
+
+
+/* =================================
+   LOGIN OPTIONS
+================================= */
+
+.login-options {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 22px;
+
+    font-size: 12px;
+
+}
+
+
+.remember {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+}
+
+
+.login-options a {
+
+    color: #4b9da2;
+
+    text-decoration: none;
+
+}
+
+
+.login-options a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =================================
+   LOGIN BUTTON
+================================= */
+
+.login-submit {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #a8dfe3;
+
+    color: #000000;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+}
+
+
+.login-submit:hover {
+
+    background-color: #8ed2d7;
+
+}
+
+
+/* =================================
+   DIVIDER
+================================= */
+
+.divider {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 25px 0;
+
+    color: #999999;
+
+    font-size: 12px;
+
+}
+
+
+.divider::before,
+.divider::after {
+
+    content: "";
+
+    height: 1px;
+
+    background-color: #dddddd;
+
+    flex: 1;
+
+}
+
+
+/* =================================
+   GOOGLE
+================================= */
+
+.google-btn {
+
+    width: 100%;
+
+    height: 48px;
+
+    border: 1px solid #d5d5d5;
+
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+}
+
+
+.google-btn:hover {
+
+    background-color: #f7f7f7;
+
+}
+
+
+/* =================================
+   SIGN UP
+================================= */
+
+.signup-text {
+
+    text-align: center;
+
+    font-size: 13px;
+
+    margin-top: 25px;
+
+    color: #666666;
+
+}
+
+
+.signup-text a {
+
+    color: #4b9da2;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+}
+
+
+.signup-text a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =================================
+   BACK HOME
+================================= */
+
+.back-home {
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #555555;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+}
+
+
+.back-home:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =================================
+   LOGIN RESPONSIVE
+================================= */
+
+@media (max-width: 600px) {
+
+    .login-body {
+
+        padding: 20px;
+
+    }
+
+
+    .login-card {
+
+        padding: 35px 25px;
+
+        border-radius: 15px;
+
+    }
+
+
+    .login-card h2 {
+
+        font-size: 24px;
+
+    }
+
+
+    .login-logo img {
+
+        width: 85px;
+
+        height: 85px;
+
+    }
+
+}
+
+/* =================================
+   SEARCH
+================================= */
+
+.search-container {
+    width: 80%;
+    max-width: 900px;
+
+    margin: -80px auto 0;
+
+    position: relative;
+    z-index: 5;
+
+    background-color: #ffffff;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+.search-container h2 {
+    font-size: 22px;
+    font-weight: normal;
+
+    margin-bottom: 20px;
+}
+
+
+.search-form {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* =================================
+   LOCATION
+================================= */
+
+.location-box,
+.date-box {
+
+    flex: 1;
+
+    min-width: 0;
+
+    height: 53px;
+
+    border: 1px solid #b7cfe0;
+
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+
+    padding: 8px 12px;
+
+    cursor: pointer;
+}
+
+
+.location-box:hover,
+.date-box:hover {
+
+    border-color: #80cdd2;
+}
+
+
+.icon {
+    font-size: 20px;
+
+    margin-right: 10px;
+}
+
+
+.field-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+.field-label {
+
+    font-size: 10px;
+
+    color: #777777;
+
+    margin-bottom: 3px;
+}
+
+
+.field-value {
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =================================
+   SWAP
+================================= */
+
+.swap-btn {
+
+    width: 31px;
+    height: 31px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    border: 1px solid #9bd7db;
+
+    background-color: #e1f7f8;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    z-index: 2;
+}
+
+
+.swap-btn:hover {
+
+    background-color: #c9eef0;
+}
+
+
+/* =================================
+   SEARCH BUTTON
+================================= */
+
+.search-btn {
+
+    display: block;
+
+    margin: 13px 0 0 auto;
+
+    padding: 10px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background-color: #a8dfe3;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+.search-btn:hover {
+
+    background-color: #8ed2d7;
+}
+
+
+/* =================================
+   POPULER
+================================= */
+
+.popular {
+
+    width: 100%;
+
+    margin: 55px 0 50px;
+
+    padding: 0 6%;
+}
+
+
+.popular-header {
+
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+
+.popular-header h2 {
+
+    font-size: 27px;
+
+    font-weight: normal;
+}
+
+
+/* =================================
+   CAROUSEL
+================================= */
+
+.popular-carousel {
+
+    width: 100%;
+
+    position: relative;
+}
+
+
+.popular-list {
+
+    width: 100%;
+
+    display: flex;
+
+    gap: 20px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    padding: 5px 5px 18px;
+
+    cursor: grab;
+
+    scrollbar-width: none;
+
+    user-select: none;
+}
+
+
+.popular-list::-webkit-scrollbar {
+
+    display: none;
+}
+
+
+.popular-list:active {
+
+    cursor: grabbing;
+}
+
+
+/* =================================
+   CARD
+================================= */
+
+.destination-card {
+
+    flex: 0 0 210px;
+
+    width: 210px;
+
+    background-color: #ffffff;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.2s;
+}
+
+
+.destination-card:hover {
+
+    transform: translateY(-4px);
+}
+
+
+.destination-card img {
+
+    width: 100%;
+
+    height: 125px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.destination-info {
+
+    padding: 12px;
+
+    text-align: center;
+}
+
+
+.destination-info h3 {
+
+    font-size: 16px;
+
+    font-weight: normal;
+
+    margin-bottom: 6px;
+}
+
+
+.destination-info p {
+
+    font-size: 10px;
+
+    margin-bottom: 4px;
+
+    color: #777777;
+}
+
+
+.destination-info strong {
+
+    font-size: 11px;
+}
+
+
+/* =================================
+   PANAH
+================================= */
+
+.popular-arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: #ffffff;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.18);
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+
+.popular-arrow:hover {
+
+    background-color: #eafafa;
+}
+
+
+.popular-arrow.left {
+
+    left: -15px;
+}
+
+
+.popular-arrow.right {
+
+    right: -15px;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+
+    width: 100%;
+
+    min-height: 90px;
+
+    background-color: #fff8dc;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 20px;
+}
+
+
+.footer-links {
+
+    margin-bottom: 10px;
+}
+
+
+.footer-links a {
+
+    color: #000000;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    margin: 0 4px;
+}
+
+
+.footer-links a:hover {
+
+    text-decoration: underline;
+}
+
+
+footer p {
+
+    font-size: 12px;
+}
+
+
+/* =================================
+   MODAL
+================================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    z-index: 100;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.45);
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.modal-content {
+
+    width: 90%;
+
+    max-width: 450px;
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    background-color: #ffffff;
+
+    border-radius: 13px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.modal-content h2 {
+
+    font-size: 21px;
+
+    font-weight: normal;
+
+    margin-bottom: 18px;
+}
+
+
+.close-btn {
+
+    float: right;
+
+    border: none;
+
+    background: none;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =================================
+   AIRPORT
+================================= */
+
+.airport-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.airport-item {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #d4e0e5;
+
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    cursor: pointer;
+
+    text-align: left;
+}
+
+
+.airport-item:hover {
+
+    background-color: #eaf9fa;
+
+    border-color: #9ed9dc;
+}
+
+
+.airport-item strong {
+
+    display: block;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+
+.airport-item small {
+
+    display: block;
+
+    font-size: 11px;
+
+    color: #666666;
+}
+
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+
+        height: 250px;
+    }
+
+
+    .logo {
+
+        top: 40px;
+    }
+
+
+    .logo img {
+
+        width: 75px;
+        height: 75px;
+    }
+
+
+    .login-area {
+
+        top: 25px;
+        right: 5%;
+    }
+
+
+    .login-btn,
+    .logout-btn {
+
+        font-size: 13px;
+    }
+
+
+    .search-container {
+
+        width: 90%;
+
+        margin-top: -55px;
+
+        padding: 20px;
+    }
+
+
+    .search-form {
+
+        flex-direction: column;
+    }
+
+
+    .location-box,
+    .date-box {
+
+        width: 100%;
+    }
+
+
+    .swap-btn {
+
+        margin: -17px auto;
+    }
+
+
+    .search-btn {
+
+        width: 100%;
+
+        margin-top: 18px;
+    }
+
+
+    .popular {
+
+        padding: 0 5%;
+    }
+
+
+    .destination-card {
+
+        flex: 0 0 180px;
+
+        width: 180px;
+    }
+
+
+    .popular-arrow {
+
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .hero {
+
+        height: 220px;
+    }
+
+
+    .logo {
+
+        top: 35px;
+    }
+
+
+    .logo img {
+
+        width: 65px;
+        height: 65px;
+    }
+
+
+    .search-container {
+
+        width: 94%;
+    }
+
+
+    .footer-links a {
+
+        font-size: 11px;
+    }
+
+}

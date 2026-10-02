@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Login - SoraTix</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body class="login-body">
+
+
+    <div class="login-card">
+
+
+        <!-- LOGO -->
+
+        <div class="login-logo">
+
+            <img
+                src="assets/logo.png"
+                alt="SoraTix">
+
+            <h1>
+                SoraTix
+            </h1>
+
+        </div>
+
+
+        <!-- JUDUL -->
+
+        <h2>
+            Welcome Back!
+        </h2>
+
+        <p class="login-subtitle">
+            Login untuk melanjutkan perjalananmu
+        </p>
+
+
+        <!-- FORM LOGIN -->
+
+        <form onsubmit="login(event)">
+
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Masukkan email kamu"
+                    required>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Masukkan password kamu"
+                    required>
+
+            </div>
+
+
+            <!-- INGAT SAYA -->
+
+            <div class="login-options">
+
+                <label class="remember">
+
+                    <input
+                        type="checkbox"
+                        id="remember">
+
+                    Ingat saya
+
+                </label>
+
+
+                <a href="#">
+                    Lupa password?
+                </a>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <button
+                type="submit"
+                class="login-submit">
+
+                Login
+
+            </button>
+
+        </form>
+
+
+        <!-- GOOGLE -->
+
+        <div class="divider">
+
+            <span>
+                atau
+            </span>
+
+        </div>
+
+
+        <button
+            class="google-btn"
+            type="button">
+
+            Login dengan Google
+
+        </button>
+
+
+        <!-- SIGN UP -->
+
+        <p class="signup-text">
+
+            Belum punya akun?
+
+            <a href="signin.html">
+                Sign Up
+            </a>
+
+        </p>
+
+
+        <!-- KEMBALI -->
+
+        <a
+            href="index.html"
+            class="back-home">
+
+            ← Kembali ke Home
+
+        </a>
+
+
+    </div>
+
+
+    <script>
+
+        function login(event) {
+
+            event.preventDefault();
+
+
+            const email =
+                document.getElementById(
+                    "email"
+                ).value.trim().toLowerCase();
+
+
+            const password =
+                document.getElementById(
+                    "password"
+                ).value;
+
+
+            /*
+            =================================
+            AKUN ADMIN
+            =================================
+
+            Email:
+            admin@soratix.com
+
+            Password:
+            admin123
+            */
+
+
+            const adminEmail =
+                "admin@soratix.com";
+
+
+            const adminPassword =
+                "admin123";
+
+
+            /* ===============================
+               CEK ADMIN
+            =============================== */
+
+            if (
+                email === adminEmail &&
+                password === adminPassword
+            ) {
+
+                localStorage.setItem(
+                    "isLogin",
+                    "true"
+                );
+
+
+                localStorage.setItem(
+                    "role",
+                    "admin"
+                );
+
+
+                localStorage.setItem(
+                    "userEmail",
+                    email
+                );
+
+
+                alert(
+                    "Login sebagai Admin berhasil!"
+                );
+
+
+                window.location.href =
+                    "admin.html";
+
+
+                return;
+            }
+
+
+            /* ===============================
+               LOGIN CUSTOMER
+            =============================== */
+
+            const savedEmail =
+                localStorage.getItem(
+                    "userEmail"
+                );
+
+
+            const savedPassword =
+                localStorage.getItem(
+                    "userPassword"
+                );
+
+
+            if (
+                email === savedEmail &&
+                password === savedPassword
+            ) {
+
+                localStorage.setItem(
+                    "isLogin",
+                    "true"
+                );
+
+
+                localStorage.setItem(
+                    "role",
+                    "customer"
+                );
+
+
+                alert(
+                    "Login berhasil!"
+                );
+
+
+                window.location.href =
+                    "index.html";
+
+
+                return;
+            }
+
+
+            /* ===============================
+               LOGIN GAGAL
+            =============================== */
+
+            alert(
+                "Email atau password salah."
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
